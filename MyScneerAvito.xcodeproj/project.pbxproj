@@ -7,17 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E335D67025BA29270058100F /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335D66F25BA29260058100F /* CustomImageView.swift */; };
+		E3EBFCE125B4462000432F1D /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBFCE025B4462000432F1D /* MainPresenter.swift */; };
+		E3EBFCE325B4471500432F1D /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBFCE225B4471500432F1D /* MainRouter.swift */; };
+		E3EBFCE525B4693100432F1D /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBFCE425B4693100432F1D /* MainConfigurator.swift */; };
+		E3EBFCE925B4D57E00432F1D /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBFCE825B4D57E00432F1D /* MyCollectionViewCell.swift */; };
 		E3F81E1025AF3F6000F808BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F81E0F25AF3F6000F808BE /* AppDelegate.swift */; };
 		E3F81E1225AF3F6000F808BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F81E1125AF3F6000F808BE /* SceneDelegate.swift */; };
 		E3F81E1425AF3F6000F808BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F81E1325AF3F6000F808BE /* ViewController.swift */; };
 		E3F81E1725AF3F6000F808BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3F81E1525AF3F6000F808BE /* Main.storyboard */; };
 		E3F81E1925AF3F6300F808BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3F81E1825AF3F6300F808BE /* Assets.xcassets */; };
 		E3F81E1C25AF3F6300F808BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3F81E1A25AF3F6300F808BE /* LaunchScreen.storyboard */; };
-		E3F81E2425AF3F7D00F808BE /* avito.json in Resources */ = {isa = PBXBuildFile; fileRef = E3F81E2325AF3F7D00F808BE /* avito.json */; };
-		E3F81E2625AF77E600F808BE /* MainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F81E2525AF77E600F808BE /* MainProtocol.swift */; };
+		E3F81E2A25AF944A00F808BE /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F81E2925AF944A00F808BE /* ServerService.swift */; };
+		E3F81E2C25AF982800F808BE /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F81E2B25AF982800F808BE /* MainInteractor.swift */; };
+		E3F81E2F25B0BAA600F808BE /* RootModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F81E2E25B0BAA500F808BE /* RootModel.swift */; };
+		E3F81E3325B0DD1B00F808BE /* avito.json in Resources */ = {isa = PBXBuildFile; fileRef = E3F81E3225B0DD1B00F808BE /* avito.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E335D66F25BA29260058100F /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		E3EBFCE025B4462000432F1D /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		E3EBFCE225B4471500432F1D /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		E3EBFCE425B4693100432F1D /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
+		E3EBFCE825B4D57E00432F1D /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3F81E0C25AF3F6000F808BE /* MyScneerAvito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyScneerAvito.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F81E0F25AF3F6000F808BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3F81E1125AF3F6000F808BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,8 +38,10 @@
 		E3F81E1825AF3F6300F808BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3F81E1B25AF3F6300F808BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3F81E1D25AF3F6300F808BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3F81E2325AF3F7D00F808BE /* avito.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = avito.json; sourceTree = "<group>"; };
-		E3F81E2525AF77E600F808BE /* MainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProtocol.swift; sourceTree = "<group>"; };
+		E3F81E2925AF944A00F808BE /* ServerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
+		E3F81E2B25AF982800F808BE /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		E3F81E2E25B0BAA500F808BE /* RootModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModel.swift; sourceTree = "<group>"; };
+		E3F81E3225B0DD1B00F808BE /* avito.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = avito.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +74,64 @@
 		E3F81E0E25AF3F6000F808BE /* MyScneerAvito */ = {
 			isa = PBXGroup;
 			children = (
-				E3F81E0F25AF3F6000F808BE /* AppDelegate.swift */,
-				E3F81E1125AF3F6000F808BE /* SceneDelegate.swift */,
-				E3F81E1325AF3F6000F808BE /* ViewController.swift */,
-				E3F81E2525AF77E600F808BE /* MainProtocol.swift */,
-				E3F81E1525AF3F6000F808BE /* Main.storyboard */,
+				E3F81E3625B34AA600F808BE /* System */,
+				E3F81E3825B34AE500F808BE /* Storyboards */,
+				E3F81E3925B34B9900F808BE /* Modules */,
+				E3F81E3725B34AC600F808BE /* Service */,
 				E3F81E1825AF3F6300F808BE /* Assets.xcassets */,
-				E3F81E1A25AF3F6300F808BE /* LaunchScreen.storyboard */,
 				E3F81E1D25AF3F6300F808BE /* Info.plist */,
-				E3F81E2325AF3F7D00F808BE /* avito.json */,
 			);
 			path = MyScneerAvito;
+			sourceTree = "<group>";
+		};
+		E3F81E2D25B0BA9200F808BE /* Entitiy */ = {
+			isa = PBXGroup;
+			children = (
+				E3F81E2E25B0BAA500F808BE /* RootModel.swift */,
+			);
+			path = Entitiy;
+			sourceTree = "<group>";
+		};
+		E3F81E3625B34AA600F808BE /* System */ = {
+			isa = PBXGroup;
+			children = (
+				E3F81E0F25AF3F6000F808BE /* AppDelegate.swift */,
+				E3F81E1125AF3F6000F808BE /* SceneDelegate.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		E3F81E3725B34AC600F808BE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E3F81E2925AF944A00F808BE /* ServerService.swift */,
+				E335D66F25BA29260058100F /* CustomImageView.swift */,
+				E3F81E3225B0DD1B00F808BE /* avito.json */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E3F81E3825B34AE500F808BE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E3F81E1525AF3F6000F808BE /* Main.storyboard */,
+				E3F81E1A25AF3F6300F808BE /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E3F81E3925B34B9900F808BE /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E3EBFCE425B4693100432F1D /* MainConfigurator.swift */,
+				E3F81E1325AF3F6000F808BE /* ViewController.swift */,
+				E3EBFCE825B4D57E00432F1D /* MyCollectionViewCell.swift */,
+				E3F81E2B25AF982800F808BE /* MainInteractor.swift */,
+				E3EBFCE025B4462000432F1D /* MainPresenter.swift */,
+				E3EBFCE225B4471500432F1D /* MainRouter.swift */,
+				E3F81E2D25B0BA9200F808BE /* Entitiy */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F81E1C25AF3F6300F808BE /* LaunchScreen.storyboard in Resources */,
-				E3F81E2425AF3F7D00F808BE /* avito.json in Resources */,
+				E3F81E3325B0DD1B00F808BE /* avito.json in Resources */,
 				E3F81E1925AF3F6300F808BE /* Assets.xcassets in Resources */,
 				E3F81E1725AF3F6000F808BE /* Main.storyboard in Resources */,
 			);
@@ -144,10 +205,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3F81E2625AF77E600F808BE /* MainProtocol.swift in Sources */,
+				E3EBFCE925B4D57E00432F1D /* MyCollectionViewCell.swift in Sources */,
+				E3F81E2F25B0BAA600F808BE /* RootModel.swift in Sources */,
+				E3F81E2A25AF944A00F808BE /* ServerService.swift in Sources */,
+				E3EBFCE125B4462000432F1D /* MainPresenter.swift in Sources */,
 				E3F81E1425AF3F6000F808BE /* ViewController.swift in Sources */,
 				E3F81E1025AF3F6000F808BE /* AppDelegate.swift in Sources */,
 				E3F81E1225AF3F6000F808BE /* SceneDelegate.swift in Sources */,
+				E335D67025BA29270058100F /* CustomImageView.swift in Sources */,
+				E3F81E2C25AF982800F808BE /* MainInteractor.swift in Sources */,
+				E3EBFCE525B4693100432F1D /* MainConfigurator.swift in Sources */,
+				E3EBFCE325B4471500432F1D /* MainRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
