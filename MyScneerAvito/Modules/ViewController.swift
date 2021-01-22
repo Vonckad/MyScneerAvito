@@ -9,27 +9,18 @@ import UIKit
 
 protocol MainViewProtocol {
     
-    func setTextMainLabel(text: String)
     var coutnCell: Int { get set }
     func setTitleButton(text: String)
-    var selectedCell: String { get set }
-    var selCell: Bool {get set}
-    var setSelectedCell: IndexPath {get}
+    func setTextMainLabel(text: String)
 }
 
 class ViewController: UIViewController, MainViewProtocol {
     
     var coutnCell: Int = 0
-    
-    var selectedCell: String = ""
-    var selCell: Bool = false
-    var setSelectedCell: IndexPath = .init(row: 0, section: 0)
-    
     var closeButtonView = UIImageView()
     var mainLabel = UILabel()
     var chooseButton = UIButton()
     var myCollectionView: UICollectionView!
-    
     var presenter: MainPresenterProtocol!
     var configurator: MainConfiguratorProtocol = MainConfigurator()
     
@@ -40,7 +31,6 @@ class ViewController: UIViewController, MainViewProtocol {
         createMainLabel()
         createMyCollectionView()
         createChooseButton()
-
         configurator.configure(with: self)
         presenter.configureView()
     }
@@ -55,7 +45,7 @@ class ViewController: UIViewController, MainViewProtocol {
         chooseButton.setTitle(text, for: .normal)
     }
     
-    func createCloseButtonView() {
+    fileprivate func createCloseButtonView() {
         
         closeButtonView.translatesAutoresizingMaskIntoConstraints = false
         closeButtonView.image = UIImage(named: "x")
@@ -64,8 +54,7 @@ class ViewController: UIViewController, MainViewProtocol {
         closeButtonView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         closeButtonView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
     }
-    
-    func createMainLabel() {
+    fileprivate func createMainLabel() {
 
         mainLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mainLabel)
@@ -74,8 +63,7 @@ class ViewController: UIViewController, MainViewProtocol {
         mainLabel.topAnchor.constraint(equalTo: closeButtonView.bottomAnchor, constant: 40).isActive = true
         mainLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
-    
-    func createMyCollectionView() {
+    fileprivate func createMyCollectionView() {
 
         let layout = UICollectionViewFlowLayout()
         myCollectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
@@ -95,8 +83,7 @@ class ViewController: UIViewController, MainViewProtocol {
         myCollectionView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 40).isActive = true
         myCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
-    
-    func createChooseButton() {
+    fileprivate func createChooseButton() {
 
         chooseButton.translatesAutoresizingMaskIntoConstraints = false
         chooseButton.setTitle("Выбрать", for: .normal)
@@ -114,6 +101,7 @@ class ViewController: UIViewController, MainViewProtocol {
     }
 }
 
+//MARK:- UICollectionViewDataSource, UICollectionViewDelegate
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -124,57 +112,31 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         return coutnCell
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MyCollectionViewCell
-        
-        cell.backgroundColor = .systemGray6
-        cell.layer.cornerRadius = 10
-        cell.image.loadImageUsingUrlStrting(urlString: presenter.setImageForCell(index: indexPath))
-        cell.image.contentMode = .scaleAspectFit
-        cell.titleLabel.numberOfLines = 0
-        cell.titleLabel.text = presenter.setTitleForCell(index: indexPath)
-        cell.descriptionLabel.numberOfLines = 0
-        cell.descriptionLabel.text = presenter.setDescriptionForCell(index: indexPath)
-        cell.priceLabel.text = presenter.setPriceForCell(index: indexPath)
-        cell.currentCellSelectedImage.layer.cornerRadius = 13
-        cell.currentCellSelectedImage.backgroundColor = UIColor.init(red: 57/255, green: 172/255, blue: 251/255, alpha: 1.0)
-        cell.currentCellSelectedImage.image = UIImage(named: "mark")
-        
-//        cell.currentCellSelectedImage.isHidden = true
-        cell.currentCellSelectedImage.contentMode = .scaleAspectFill
-        return cell
+        var cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MyCollectionViewCell
+            cell = presenter.configureCell(cell: cell, index: indexPath)
+        return  cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-
-        if let cell = (myCollectionView.cellForItem(at: indexPath) as? MyCollectionViewCell) {
-            selCell = true
-        cell.currentCellSelectedImage.isHidden = true
-        }
-//        collectionView.reloadData()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        
-        if let cell = (myCollectionView.cellForItem(at: indexPath) as? MyCollectionViewCell) {
-            if cell.currentCellSelectedImage.isHidden == true {
-                selCell = false
-                setSelectedCell = indexPath
-                cell.currentCellSelectedImage.isHidden = false
-            } else {
-                selCell = true
-                setSelectedCell = indexPath
-                cell.currentCellSelectedImage.isHidden = true
-            }
-        }
-        
-        selectedCell = String(indexPath.section)
-        print("presenter.titleButton1() === ", presenter.titleButton1())
-        setTitleButton(text: presenter.reloadTitleForButton())
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//
+//        if let cell = (myCollectionView.cellForItem(at: indexPath) as? MyCollectionViewCell) {
+//            if cell.currentCellSelectedImage.isHidden == true {
+//                selCell = false
+//                setSelectedCell = indexPath
+//                cell.currentCellSelectedImage.isHidden = false
+//            } else {
+//                selCell = true
+//                setSelectedCell = indexPath
+//                cell.currentCellSelectedImage.isHidden = true
+//            }
+//        }
+//
+//        selectedCell = String(indexPath.section)
+//        print("presenter.titleButton1() === ", presenter.titleButton1())
+//        setTitleButton(text: presenter.reloadTitleForButton())
+//
+//    }
 }

@@ -16,9 +16,10 @@ protocol MainInteractorProtocol: class {
     func getDescriptoinForCell(index: IndexPath) -> String
     func getPriceForCell(index: IndexPath) -> String
     func getImageForCell(index: IndexPath) -> String
-    func chengeButtomTitle() -> String
     var count: Int {get}
-    func isSelected(index: IndexPath) -> Bool
+    
+    
+    
 }
 
 class MainInteractor: MainInteractorProtocol {
@@ -43,13 +44,7 @@ class MainInteractor: MainInteractorProtocol {
     
     var titleButton: String {
         get {
-            if presenter.titleButton == "" {
-                print("00000 = ", presenter.titleButton)
             return myAvitoData.result.actionTitle
-            } else {
-                print("11111 = ", presenter.titleButton)
-            return myAvitoData.result.selectedActionTitle
-            }
         }
     }
     
@@ -65,23 +60,6 @@ class MainInteractor: MainInteractorProtocol {
     
     func getImageForCell(index: IndexPath) -> String {
         return myAvitoData.result.list[index.section].icon.x52x52
-    }
-    
-    func isSelected(index: IndexPath) -> Bool {
-        if myAvitoData.result.list[index.section].isSelected == presenter.setChekmark() {
-            myAvitoData.result.list[index.section].isSelected = false
-            print("myAvitoData.result.list[index.section].isSelected === ", myAvitoData.result.list[index.section].isSelected)
-        } else {
-            myAvitoData.result.list[index.section].isSelected = true
-        }
-        return myAvitoData.result.list[index.section].isSelected
-    }
-    
-    func chengeButtomTitle() -> String {
-        if presenter.titleButton != nil {
-            print("Что-то там нужно сделать ", presenter.titleButton)
-        }
-        return presenter.titleButton
     }
     
     required init(presenter: MainPresenterProtocol) {
