@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E335D67025BA29270058100F /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E335D66F25BA29260058100F /* CustomImageView.swift */; };
 		E3EBFCE125B4462000432F1D /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBFCE025B4462000432F1D /* MainPresenter.swift */; };
-		E3EBFCE325B4471500432F1D /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBFCE225B4471500432F1D /* MainRouter.swift */; };
 		E3EBFCE525B4693100432F1D /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBFCE425B4693100432F1D /* MainConfigurator.swift */; };
 		E3EBFCE925B4D57E00432F1D /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EBFCE825B4D57E00432F1D /* MyCollectionViewCell.swift */; };
 		E3F81E1025AF3F6000F808BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F81E0F25AF3F6000F808BE /* AppDelegate.swift */; };
@@ -27,7 +26,6 @@
 /* Begin PBXFileReference section */
 		E335D66F25BA29260058100F /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		E3EBFCE025B4462000432F1D /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
-		E3EBFCE225B4471500432F1D /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		E3EBFCE425B4693100432F1D /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
 		E3EBFCE825B4D57E00432F1D /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3F81E0C25AF3F6000F808BE /* MyScneerAvito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyScneerAvito.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +126,6 @@
 				E3EBFCE825B4D57E00432F1D /* MyCollectionViewCell.swift */,
 				E3F81E2B25AF982800F808BE /* MainInteractor.swift */,
 				E3EBFCE025B4462000432F1D /* MainPresenter.swift */,
-				E3EBFCE225B4471500432F1D /* MainRouter.swift */,
 				E3F81E2D25B0BA9200F808BE /* Entitiy */,
 			);
 			path = Modules;
@@ -215,7 +212,6 @@
 				E335D67025BA29270058100F /* CustomImageView.swift in Sources */,
 				E3F81E2C25AF982800F808BE /* MainInteractor.swift in Sources */,
 				E3EBFCE525B4693100432F1D /* MainConfigurator.swift in Sources */,
-				E3EBFCE325B4471500432F1D /* MainRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

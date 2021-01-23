@@ -8,17 +8,17 @@
 import UIKit
 
 protocol MainPresenterProtocol: class {
-//    var router: MainRouterProtocol! { set get }
+
     func configureView()
     func setTitleForButtom(isSelectedCell: Bool) -> String
     func configureCell(cell: inout MyCollectionViewCell, index: IndexPath) -> MyCollectionViewCell
+    func show(view1: UIViewController)
 }
 
 class MainPresenter: MainPresenterProtocol {
     
     var view: MainViewProtocol!
     var interactor: MainInteractorProtocol!
-//    var router: MainRouterProtocol!
     
     required init(view: MainViewProtocol) {
         self.view = view
@@ -26,6 +26,10 @@ class MainPresenter: MainPresenterProtocol {
     
     func setTitleForButtom(isSelectedCell: Bool) -> String {
         return interactor.getTitleForButtom(isSelectedCell: isSelectedCell)
+    }
+    
+    func show(view1: UIViewController) {
+        interactor.showAlert(view: view1, title: interactor.getTitleForAllert(atIndex: view.currentIndex))
     }
     
     func configureView() {

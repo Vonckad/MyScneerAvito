@@ -98,12 +98,22 @@ class ViewController: UIViewController, MainViewProtocol {
         chooseButton.titleLabel?.font = .systemFont(ofSize: 26)
         chooseButton.layer.cornerRadius = 10
         view.addSubview(chooseButton)
+        chooseButton.addTarget(self, action: #selector(buttonIsTapped), for: .touchUpInside)
+        chooseButton.addTarget(self, action: #selector(buttonIsPressed), for: .touchDown)
         
         chooseButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         chooseButton.topAnchor.constraint(equalTo: myCollectionView.bottomAnchor, constant: 20).isActive = true
         chooseButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
         chooseButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-
+    }
+    
+    @objc func buttonIsTapped(sender: UIButton) {
+        chooseButton.backgroundColor = UIColor.init(red: 57/255, green: 172/255, blue: 251/255, alpha: 1.0)
+        presenter.show(view1: self)
+    }
+    
+    @objc func buttonIsPressed(sender: UIButton) {
+        chooseButton.backgroundColor = UIColor.init(red: 57/255, green: 226/255, blue: 251/255, alpha: 1.0)
     }
 }
 

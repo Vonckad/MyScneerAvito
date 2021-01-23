@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+
 protocol MainInteractorProtocol: class {
     
     func getAllCurrencies()
@@ -16,6 +17,8 @@ protocol MainInteractorProtocol: class {
     func getPriceForCell(index: IndexPath) -> String
     func getImageForCell(index: IndexPath) -> String
     func getTitleForButtom(isSelectedCell: Bool) -> String
+    func showAlert(view: UIViewController, title: String)
+    func getTitleForAllert(atIndex: Int) -> String
     func chekIsSelected(cell: MyCollectionViewCell, index: IndexPath, currentIndex: Int, isSelected: Bool) -> MyCollectionViewCell
     var count: Int {get}
 }
@@ -23,9 +26,7 @@ protocol MainInteractorProtocol: class {
 class MainInteractor: MainInteractorProtocol {
        
     var myAvitoData = RootModel()
-//    var currentIndex = -1
     weak var presenter: MainPresenterProtocol!
-    
     let serverService: ServerServiceProtocol = ServerService()
 
     var title: String {
@@ -63,13 +64,30 @@ class MainInteractor: MainInteractorProtocol {
         if index.section == currentIndex {
             myAvitoData.result.list[index.section].isSelected = !isSelected
             cell.currentCellSelectedImage.isHidden = !myAvitoData.result.list[currentIndex].isSelected
+            
         } else if index.section != currentIndex {
             myAvitoData.result.list[index.section].isSelected = false
             cell.currentCellSelectedImage.isHidden = true
+            
         }
-        
-        print("myAvitoData.result.list[\(currentIndex) == \(index.section)].isSelected = ", myAvitoData.result.list[index.section].isSelected)
+//        print("myAvitoData.result.list[\(currentIndex) == \(index.section)].isSelected = ", myAvitoData.result.list[index.section].isSelected)
         return cell
+    }
+    
+    func showAlert(view: UIViewController, title: String) {
+        
+        let allert = UIAlertController.init(title: title, message: "", preferredStyle: .alert)
+        let canceAction = UIAlertAction(title: "Ок", style: .default, handler: nil)
+        allert.addAction(canceAction)
+        view.present(allert, animated: true, completion: nil)
+    }
+    
+    func getTitleForAllert(atIndex: Int) -> String {
+        var massage = "Продолжить без изменений?"
+        if atIndex >= 0 && myAvitoData.result.list[atIndex].isSelected == true {
+        massage = "Вы выбрали:\n\(myAvitoData.result.list[atIndex].title)"
+        }
+        return massage
     }
     
     required init(presenter: MainPresenterProtocol) {
@@ -78,7 +96,7 @@ class MainInteractor: MainInteractorProtocol {
     
     func getAllCurrencies() {
         
-        serverService.loadWeather { (dist) in
+        serverService.readJson { (dist) in
             self.myAvitoData = dist
         }
     }

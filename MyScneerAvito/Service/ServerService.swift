@@ -10,7 +10,7 @@ import UIKit
 
 protocol ServerServiceProtocol: class {
 
-    func loadWeather(completion: @escaping (RootModel) -> Void)
+    func readJson(completion: @escaping (RootModel) -> Void)
     func getImage(link: String) -> UIImage
 }
 
@@ -18,7 +18,7 @@ class ServerService: ServerServiceProtocol {
        
     var myImage = UIImage()
     
-    func loadWeather(completion: @escaping (RootModel) -> Void) {
+    func readJson(completion: @escaping (RootModel) -> Void) {
         
         if let url = Bundle.main.url(forResource: "avito", withExtension: "json") {
             do {
