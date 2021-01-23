@@ -10,7 +10,8 @@ import UIKit
 protocol MainPresenterProtocol: class {
 //    var router: MainRouterProtocol! { set get }
     func configureView()
-    func configureCell(cell: MyCollectionViewCell, index: IndexPath) -> MyCollectionViewCell
+    func setTitleForButtom(isSelectedCell: Bool) -> String
+    func configureCell(cell: inout MyCollectionViewCell, index: IndexPath) -> MyCollectionViewCell
 }
 
 class MainPresenter: MainPresenterProtocol {
@@ -23,15 +24,19 @@ class MainPresenter: MainPresenterProtocol {
         self.view = view
     }
     
+    func setTitleForButtom(isSelectedCell: Bool) -> String {
+        return interactor.getTitleForButtom(isSelectedCell: isSelectedCell)
+    }
+    
     func configureView() {
         
         interactor.getAllCurrencies()
         view.setTextMainLabel(text: interactor.title)
         view.coutnCell = interactor.count
-        view.setTitleButton(text: interactor.titleButton)
+        view.setTitleButton(text: interactor.getTitleForButtom(isSelectedCell: view.isSelectedCell))
     }
     
-    func configureCell(cell: MyCollectionViewCell, index: IndexPath) -> MyCollectionViewCell {
+    func configureCell( cell: inout MyCollectionViewCell, index: IndexPath) -> MyCollectionViewCell {
         
         cell.backgroundColor = .systemGray6
         cell.layer.cornerRadius = 10
@@ -39,8 +44,7 @@ class MainPresenter: MainPresenterProtocol {
         cell.titleLabel.text = interactor.getTitleForCell(index: index)
         cell.descriptionLabel.text = interactor.getDescriptoinForCell(index: index)
         cell.priceLabel.text = interactor.getPriceForCell(index: index)
-        cell.currentCellSelectedImage.image = UIImage(named: "mark")
-        
+        cell = interactor.chekIsSelected(cell: cell, index: index, currentIndex: view.currentIndex, isSelected: view.isSelectedCell)
         return cell
     }
 }

@@ -10,13 +10,17 @@ import UIKit
 protocol MainViewProtocol {
     
     var coutnCell: Int { get set }
-    func setTitleButton(text: String)
+    var isSelectedCell: Bool { get set }
+    var currentIndex: Int { get set }
     func setTextMainLabel(text: String)
+    func setTitleButton(text: String)
 }
 
 class ViewController: UIViewController, MainViewProtocol {
     
-    var coutnCell: Int = 0
+    var coutnCell = 0
+    var isSelectedCell = false
+    var currentIndex = -1
     var closeButtonView = UIImageView()
     var mainLabel = UILabel()
     var chooseButton = UIButton()
@@ -41,16 +45,18 @@ class ViewController: UIViewController, MainViewProtocol {
         mainLabel.text = text
     }
     
-    func setTitleButton(text: String){
+    func setTitleButton(text: String) {
         chooseButton.setTitle(text, for: .normal)
     }
-    
+        
     fileprivate func createCloseButtonView() {
         
         closeButtonView.translatesAutoresizingMaskIntoConstraints = false
-        closeButtonView.image = UIImage(named: "x")
+        closeButtonView.image = UIImage(named: "xW")
         view.addSubview(closeButtonView)
-        
+        closeButtonView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        closeButtonView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        closeButtonView.contentMode = .scaleAspectFill
         closeButtonView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         closeButtonView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
     }
@@ -86,10 +92,10 @@ class ViewController: UIViewController, MainViewProtocol {
     fileprivate func createChooseButton() {
 
         chooseButton.translatesAutoresizingMaskIntoConstraints = false
-        chooseButton.setTitle("Выбрать", for: .normal)
+        chooseButton.setTitle("Продолжить без изменений", for: .normal)
         chooseButton.titleLabel?.textColor = .white
         chooseButton.backgroundColor = UIColor.init(red: 57/255, green: 172/255, blue: 251/255, alpha: 1.0)
-        chooseButton.titleLabel?.font = UIFont.systemFont(ofSize: 26)
+        chooseButton.titleLabel?.font = .systemFont(ofSize: 26)
         chooseButton.layer.cornerRadius = 10
         view.addSubview(chooseButton)
         
@@ -115,28 +121,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         var cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MyCollectionViewCell
-            cell = presenter.configureCell(cell: cell, index: indexPath)
+        cell = presenter.configureCell(cell: &cell, index: indexPath)
         return  cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//
-//        if let cell = (myCollectionView.cellForItem(at: indexPath) as? MyCollectionViewCell) {
-//            if cell.currentCellSelectedImage.isHidden == true {
-//                selCell = false
-//                setSelectedCell = indexPath
-//                cell.currentCellSelectedImage.isHidden = false
-//            } else {
-//                selCell = true
-//                setSelectedCell = indexPath
-//                cell.currentCellSelectedImage.isHidden = true
-//            }
-//        }
-//
-//        selectedCell = String(indexPath.section)
-//        print("presenter.titleButton1() === ", presenter.titleButton1())
-//        setTitleButton(text: presenter.reloadTitleForButton())
-//
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        currentIndex = indexPath.section
+        setTitleButton(text: presenter.setTitleForButtom(isSelectedCell: isSelectedCell))
+        isSelectedCell = !isSelectedCell
+        
+        collectionView.reloadData()
+    }
 }
